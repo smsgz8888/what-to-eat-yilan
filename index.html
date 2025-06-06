@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>等一下吃什麼 - 宜蘭美食推薦</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FF8C42">
+    <meta name="description" content="宜蘭全區餐廳推薦應用程式">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+</head>
+<body>
+    <div id="app">
+        <!-- 歡迎頁面 -->
+        <div id="welcome-page" class="page active">
+            <div class="welcome-container">
+                <div class="welcome-content">
+                    <div class="logo">🍴</div>
+                    <h1 class="welcome-title">等一下吃什麼</h1>
+                    <p class="welcome-subtitle">宜蘭全區美食推薦</p>
+                    <p class="welcome-description">找不到吃什麼嗎？讀懂你的味蕾，推薦最適合的美食</p>
+                    <button class="btn btn--primary btn--lg start-btn" onclick="showPage('location-page')">
+                        開始使用
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 地址輸入頁面 -->
+        <div id="location-page" class="page">
+            <div class="page-header">
+                <button class="back-btn" onclick="showPage('welcome-page')">←</button>
+                <h2>您現在在哪裡？</h2>
+            </div>
+            <div class="page-content">
+                <div class="form-group">
+                    <label class="form-label">輸入地址或地標</label>
+                    <input type="text" class="form-control" id="location-input" 
+                           placeholder="例如：宜蘭大學、羅東夜市...">
+                </div>
+
+                <div class="landmarks-section">
+                    <h3>常用地標</h3>
+                    <div class="landmarks-grid" id="landmarks-grid">
+                        <!-- 地標按鈕將由 JS 動態生成 -->
+                    </div>
+                </div>
+
+                <button class="btn btn--primary btn--full-width" onclick="selectLocation()">
+                    確認位置
+                </button>
+            </div>
+        </div>
+
+        <!-- 料理類型選擇頁面 -->
+        <div id="cuisine-page" class="page">
+            <div class="page-header">
+                <button class="back-btn" onclick="showPage('location-page')">←</button>
+                <h2>想吃什麼類型？</h2>
+            </div>
+            <div class="page-content">
+                <p class="page-desc">可以選擇多種類型</p>
+                <div class="cuisine-grid" id="cuisine-grid">
+                    <!-- 料理類型將由 JS 動態生成 -->
+                </div>
+                <button class="btn btn--primary btn--full-width" onclick="selectCuisine()">
+                    繼續
+                </button>
+            </div>
+        </div>
+
+        <!-- 距離偏好頁面 -->
+        <div id="distance-page" class="page">
+            <div class="page-header">
+                <button class="back-btn" onclick="showPage('cuisine-page')">←</button>
+                <h2>想要多遠的距離？</h2>
+            </div>
+            <div class="page-content">
+                <div class="distance-options" id="distance-options">
+                    <!-- 距離選項將由 JS 動態生成 -->
+                </div>
+                <button class="btn btn--primary btn--full-width" onclick="getRecommendations()">
+                    取得推薦
+                </button>
+            </div>
+        </div>
+
+        <!-- 推薦結果頁面 -->
+        <div id="results-page" class="page">
+            <div class="page-header">
+                <button class="back-btn" onclick="showPage('distance-page')">←</button>
+                <h2>為您推薦</h2>
+            </div>
+            <div class="page-content">
+                <div class="results-info">
+                    <p id="results-count">找到 0 家餐廳</p>
+                    <p id="results-location">在 您選擇的位置 附近</p>
+                </div>
+                <div class="restaurants-list" id="restaurants-list">
+                    <!-- 餐廳列表將由 JS 動態生成 -->
+                </div>
+                <button class="btn btn--secondary btn--full-width" onclick="showPage('cuisine-page')">
+                    重新選擇
+                </button>
+            </div>
+        </div>
+
+        <!-- 餐廳詳情頁面 -->
+        <div id="detail-page" class="page">
+            <div class="page-header">
+                <button class="back-btn" onclick="showPage('results-page')">←</button>
+                <h2>餐廳詳情</h2>
+            </div>
+            <div class="page-content" id="restaurant-detail">
+                <!-- 餐廳詳情將由 JS 動態生成 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // 註冊 Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js');
+        }
+    </script>
+</body>
+</html>

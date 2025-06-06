@@ -1,0 +1,21 @@
+{
+  "name": "等一下吃什麼 - 宜蘭美食推薦",
+  "short_name": "等一下吃什麼",
+  "description": "宜蘭全區餐廳推薦應用程式",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#FF8C42",
+  "theme_color": "#FF6B42",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+「等一下吃什麼」網頁版部署說明
+
+1. 解壓縮此檔案到任一資料夾
+
+2. 檔案清單：
+   - index.html (主要HTML檔案)
+   - style.css (樣式表)
+   - app.js (JavaScript功能)
+   - manifest.json (PWA配置)
+   - service-worker.js (離線功能)
+   - README.md (專案說明)
+
+3. 部署到GitHub Pages：
+   - 建立新的GitHub repository
+   - 上傳所有檔案
+   - 在設定中啟用GitHub Pages
+   - 完成！
+
+4. 本地測試：
+   - 使用Live Server等工具開啟index.html
+   - 或直接雙擊index.html在瀏覽器中開啟
+
+技術支援：如有問題請參考README.md文件
